@@ -3,6 +3,7 @@ FC = ifort
 FFLAGS_DEBUG = -g -mcmodel=medium
 FFLAGS_OPT = -O2 -mcmodel=medium
 LDFLAGS = -g
+FCFLAGS += -m64
 
 # Directories
 OBJDIR = obj
