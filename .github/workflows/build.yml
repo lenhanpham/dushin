@@ -1,26 +1,11 @@
-name: Build
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+    container:
+      image: intel/oneapi:latest
+
     steps:
     - uses: actions/checkout@v4
-
-    - name: Set up Intel oneAPI
-      uses: intel-actions/setup-oneapi@v1
-      with:
-        components: intel-oneapi-compiler-fortran
-
-    - name: Configure Intel oneAPI environment
-      run: |
-        source /opt/intel/oneapi/setvars.sh
-        echo "INTEL_ONEAPI_PATH=/opt/intel/oneapi" >> $GITHUB_ENV
 
     - name: Create directories
       run: |
@@ -43,4 +28,3 @@ jobs:
 
     - name: Clean
       run: make clean
-
