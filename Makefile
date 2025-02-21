@@ -1,7 +1,7 @@
 # Compiler and flags
 FC = ifort
-FFLAGS_DEBUG = -g -mcmodel=medium -m64
-FFLAGS_OPT = -O2 -mcmodel=medium -m64
+FFLAGS_DEBUG = -g -mcmodel=medium 
+FFLAGS_OPT = -O2 -mcmodel=medium 
 LDFLAGS = -g
 
 
@@ -31,40 +31,40 @@ all: $(EXECUTABLES)
 
 # Debug objects (compiled with -g)
 $(OBJDIR)/%.o: %.f
-	$(FC) $(FFLAGS_DEBUG) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_DEBUG) -c $< -o $@
 
 # Optimized objects (compiled with -O2)
 $(OBJDIR)/recalc-freq.o: recalc-freq.f
-	$(FC) $(FFLAGS_OPT) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
 $(OBJDIR)/proj0freq.o: proj0freq.f
-	$(FC) $(FFLAGS_OPT) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
 $(OBJDIR)/bmatred.o: bmatred.f
-	$(FC) $(FFLAGS_OPT) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
 $(OBJDIR)/ddiag.o: ddiag.f
-	$(FC) $(FFLAGS_OPT) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
 $(OBJDIR)/dmpower.o: dmpower.f
-	$(FC) $(FFLAGS_OPT) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
 $(OBJDIR)/dmatinv.o: dmatinv.f
-	$(FC) $(FFLAGS_OPT) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
 # Keep subs-dftb.o compilation rule but don't include it in COMMON_OBJS
 $(OBJDIR)/subs-dftb.o: subs-dftb.f
-	$(FC) $(FFLAGS_DEBUG) $(FCFLAGS) -c $< -o $@
+	$(FC) $(FFLAGS_DEBUG) -c $< -o $@
 
 # Executables
 $(BINDIR)/dushin: $(OBJDIR)/dushin.o $(COMMON_OBJS)
-	$(FC) $(LDFLAGS) $(FCFLAGS) $^ -o $@
+	$(FC) $(LDFLAGS) $^ -o $@
 
 $(BINDIR)/displace: $(OBJDIR)/displace.o $(COMMON_OBJS)
-	$(FC) $(LDFLAGS) $(FCFLAGS) $^ -o $@
+	$(FC) $(LDFLAGS) $^ -o $@
 
 $(BINDIR)/compare-geom: $(OBJDIR)/compare-geom.o $(COMMON_OBJS)
-	$(FC) $(LDFLAGS) $(FCFLAGS) $^ -o $@
+	$(FC) $(LDFLAGS) $^ -o $@
 
 # Phony targets
 .PHONY: all clean help
