@@ -1,7 +1,7 @@
 # Compiler and flags
-FC = ifort
-FFLAGS_DEBUG = -g -mcmodel=medium
-FFLAGS_OPT = -O2 -mcmodel=medium
+FC = gfortran
+FFLAGS_DEBUG = -g -fdefault-real-8 -fdefault-double-8
+FFLAGS_OPT = -O2 -fdefault-real-8 -fdefault-double-8
 LDFLAGS = -g
 
 # Directories
