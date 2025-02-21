@@ -1,9 +1,9 @@
 # Compiler and flags
 FC = ifort
-FFLAGS_DEBUG = -g -mcmodel=medium
-FFLAGS_OPT = -O2 -mcmodel=medium
+FFLAGS_DEBUG = -g -mcmodel=medium -m64
+FFLAGS_OPT = -O2 -mcmodel=medium -m64
 LDFLAGS = -g
-FCFLAGS = -m64
+
 
 # Directories
 OBJDIR = obj
