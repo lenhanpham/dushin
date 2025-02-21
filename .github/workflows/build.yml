@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: intel/oneapi-hpckit:2021.4
+      image: intel/oneapi-hpckit:2022.3.0-devel-ubuntu20.04
     steps:
       - uses: actions/checkout@v4
       - name: Create directories
