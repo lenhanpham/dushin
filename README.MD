@@ -9,6 +9,7 @@ This is the modified version of dushin program for decomposition of reorganizati
 * The current version only supports ifort from intel compiler 
 * module load intel-compiler/version
 * cd to the dushin dir
+* module load intel-compiler/2021.1.1 
 * make all 
 
 #### Run the program
