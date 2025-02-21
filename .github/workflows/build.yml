@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Set up Intel oneAPI
       uses: oneapi-src/oneapi-ci@main
@@ -33,7 +33,7 @@ jobs:
         make all
         
     - name: Upload binaries
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dushin-binaries
         path: |
