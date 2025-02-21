@@ -768,7 +768,8 @@ C      write (30) ((dush(i,j),j=1,n3),i=1,n3)
         write (14,'(10f6.3)') (dush(i,j)**2,i=7,n3)
 	do i= 7,n23
           xxx= dush(i,j)**2
-	  if (xxx.gt.0.01) write (13,1300) eval1(i),eval2(j),abs(dush(i,j))
+	  if (xxx.gt.0.01) write (13,1300) eval1(i),eval2(j),
+     $        abs(dush(i,j))
 1300	  format ('ra -12',2f6.0,' 0.1 0.1 ',f6.3 / 'dr')
 	end do
       end do 

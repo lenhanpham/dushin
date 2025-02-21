@@ -7,22 +7,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: intel/oneapi-hpckit:2022.3.0-devel-ubuntu20.04
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Install gfortran
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gfortran
+          
       - name: Create directories
         run: |
           mkdir -p src/obj
           mkdir -p src/bin
+          
       - name: Build all executables
         working-directory: src
         shell: bash
         run: |
-          source /opt/intel/oneapi/setvars.sh --force
-          which ifort
-          ifort --version
+          gfortran --version
           make all
+          
       - name: Upload binaries
         uses: actions/upload-artifact@v4
         with:
@@ -31,6 +35,7 @@ jobs:
             src/bin/dushin
             src/bin/displace
             src/bin/compare-geom
+            
       - name: Clean
         working-directory: src
         shell: bash

@@ -1,7 +1,11 @@
-      subroutine ssiev (a,nm,n,d,e,itype,ierr)
-      implicit double precision (a-h,o-z)
+      subroutine ddiag (nm,n,a,d,e,ierr)
+      implicit none
+      integer nm,n,ierr
+      double precision a(nm,n),d(n),e(n)
+      
       call tred2e (nm,n,a,d,e,a)
-      call tql2e  (nm,n,  d,e,a,ierr)
+      call tql2e  (nm,n,d,e,a,ierr)
+      
       return
       end
 c

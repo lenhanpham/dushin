@@ -1,5 +1,9 @@
-# Include compiler configuration
-include config.mk
+# Compiler and flags
+FC = ifort
+FFLAGS_DEBUG = -g -mcmodel=medium 
+FFLAGS_OPT = -O2 -mcmodel=medium 
+LDFLAGS = -g
+
 
 # Directories
 OBJDIR = obj
@@ -23,19 +27,13 @@ EXECUTABLES = $(BINDIR)/dushin \
 $(shell mkdir -p $(OBJDIR) $(BINDIR))
 
 # Default target
-all: print-compiler $(EXECUTABLES)
+all: $(EXECUTABLES)
 
-# Print compiler information
-print-compiler:
-	@echo "Using compiler: $(FC)"
-	@echo "Debug flags: $(FFLAGS_DEBUG)"
-	@echo "Optimization flags: $(FFLAGS_OPT)"
-
-# Debug objects (compiled with debug flags)
+# Debug objects (compiled with -g)
 $(OBJDIR)/%.o: %.f
 	$(FC) $(FFLAGS_DEBUG) -c $< -o $@
 
-# Optimized objects (compiled with optimization flags)
+# Optimized objects (compiled with -O2)
 $(OBJDIR)/recalc-freq.o: recalc-freq.f
 	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
@@ -69,7 +67,7 @@ $(BINDIR)/compare-geom: $(OBJDIR)/compare-geom.o $(COMMON_OBJS)
 	$(FC) $(LDFLAGS) $^ -o $@
 
 # Phony targets
-.PHONY: all clean help print-compiler
+.PHONY: all clean help
 
 clean:
 	rm -rf $(OBJDIR) $(BINDIR)
@@ -80,13 +78,8 @@ help:
 	@echo "  clean        - Remove all built files"
 	@echo "  help         - Show this help message"
 	@echo ""
-	@echo "Configuration:"
-	@echo "  Current compiler: $(FC)"
-	@echo "  To change compiler, edit config.mk"
-	@echo ""
 	@echo "Executables will be built in $(BINDIR)/"
 	@echo "Object files will be stored in $(OBJDIR)/"
-
 
 
 

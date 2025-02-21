@@ -6,10 +6,12 @@ This is the modified version of dushin program for decomposition of reorganizati
 
 #### Compilation:
 
-* The current version only supports ifort from intel compiler 
-* cd to the dushin dir
-* module load intel-compiler/2021.1.1 
+* The current version supports both gfortran and ifort compilers.  
+* cd to the dushin dir src 
+* module load intel-compiler/2021.1.1 or load gcc
+* make changes to config.mk to select corresponding compiler. The default is gfortran 
 * make all 
+* make clean to clean up the src if errors happen
 
 #### Run the program
 

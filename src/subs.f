@@ -34,7 +34,7 @@ c     **** wk=		work vector
      $			csave(mb,mb),esave(mb),xorig(3,ma),
      $			z(*),scale(*)
       integer		nat(m),nsymv(m3),swap(3,5),iztype(*),intdef(4,*),
-     $			attyp(20)
+     $			attyp(20), dummy
       logical		scan1,scanok,g94,g98,g03,isir,coord,races2,faces2,
      $			bond(m,m),linear,mopac252,g09, g16
       character*120	filenm(nfin)
