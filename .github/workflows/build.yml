@@ -14,8 +14,8 @@ jobs:
       - name: Configure Intel oneAPI environment
         shell: bash
         run: |
-          . /opt/intel/oneapi/setvars.sh
-          echo "source_script=. /opt/intel/oneapi/setvars.sh" >> $GITHUB_ENV
+          . /opt/intel/oneapi/setvars.sh --force
+          echo "source_script=. /opt/intel/oneapi/setvars.sh --force" >> $GITHUB_ENV
       - name: Create directories
         run: |
           mkdir -p src/obj
