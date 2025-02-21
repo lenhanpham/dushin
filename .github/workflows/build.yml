@@ -14,7 +14,10 @@ jobs:
     - uses: actions/checkout@v4
     
     - name: Set up Intel oneAPI
-      uses: intel-actions/setup-oneapi@v1
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gfortran
+        uses: intel-actions/setup-oneapi@v1
       with:
         components: intel-oneapi-compiler-fortran
         
