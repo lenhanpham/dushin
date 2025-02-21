@@ -1,8 +1,8 @@
-### Dushin program supports all gaussian versions from g94 to g16
+### Dushin 2.0 supports all gaussian versions from g94 to g16
 
-This is the modified version of dushin program for decomposition of reorganization energy. The program supports all gaussian versions from 94 to 16.
-
-
+- This is the new version of dushin program for decomposition of reorganization energy. 
+- The program supports all gaussian versions from 94 to 16: both fchk and log files
+- This new version can read in any input names e.g.  input.in or input.inp or acd.input 
 
 #### Compilation:
 
