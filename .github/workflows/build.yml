@@ -1,0 +1,45 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Intel oneAPI
+      uses: oneapi-src/oneapi-ci@main
+      with:
+        components: intel-oneapi-compiler-fortran
+        
+    - name: Configure Intel oneAPI environment
+      run: |
+        source /opt/intel/oneapi/setvars.sh
+        printenv >> $GITHUB_ENV
+        
+    - name: Create directories
+      run: |
+        mkdir -p obj
+        mkdir -p bin
+        
+    - name: Build all executables
+      run: |
+        make all
+        
+    - name: Upload binaries
+      uses: actions/upload-artifact@v3
+      with:
+        name: dushin-binaries
+        path: |
+          bin/dushin
+          bin/displace
+          bin/compare-geom
+        
+    - name: Clean
+      run: make clean
