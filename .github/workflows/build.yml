@@ -1,45 +1,37 @@
 name: Build and Test
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
       image: intel/oneapi-hpckit:latest
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Configure Intel oneAPI environment
         shell: bash
         run: |
           source /opt/intel/oneapi/setvars.sh --force
           printenv >> $GITHUB_ENV
-
       - name: Create directories
         run: |
-          mkdir -p obj
-          mkdir -p bin
-
+          mkdir -p src/obj
+          mkdir -p src/bin
       - name: Build all executables
+        working-directory: src
         run: |
           make all
-
       - name: Upload binaries
         uses: actions/upload-artifact@v4
         with:
           name: dushin-binaries
           path: |
-            bin/dushin
-            bin/displace
-            bin/compare-geom
-
+            src/bin/dushin
+            src/bin/displace
+            src/bin/compare-geom
       - name: Clean
+        working-directory: src
         run: make clean
-
-
