@@ -8,14 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: intel/oneapi-hpckit:latest
+      image: intel/oneapi-hpckit:2021.4
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Intel oneAPI environment
-        shell: bash
-        run: |
-          . /opt/intel/oneapi/setvars.sh --force || true
-          echo "source_script=. /opt/intel/oneapi/setvars.sh --force || true" >> $GITHUB_ENV
       - name: Create directories
         run: |
           mkdir -p src/obj
@@ -24,7 +19,7 @@ jobs:
         working-directory: src
         shell: bash
         run: |
-          ${{ env.source_script }}
+          source /opt/intel/oneapi/setvars.sh --force
           which ifort
           ifort --version
           make all
@@ -39,6 +34,4 @@ jobs:
       - name: Clean
         working-directory: src
         shell: bash
-        run: |
-          ${{ env.source_script }}
-          make clean
+        run: make clean
