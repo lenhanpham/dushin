@@ -1,0 +1,17 @@
+module load intel-compiler/2021.1.1 
+
+Make all
+
+
+
+Run different targets:
+make or make all - builds everything
+make clean - removes all built files
+make help - shows help
+make dushin - builds just the dushin executable
+The Makefile will:
+Create obj/ and bin/ directories
+Compile source files with appropriate flags
+Place object files in obj/
+Place executables in bin/
+Only recompile files that have changed
