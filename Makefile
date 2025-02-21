@@ -1,7 +1,7 @@
 # Compiler and flags
-FC = gfortran
-FFLAGS_DEBUG = -g -fdefault-real-8 -fdefault-double-8
-FFLAGS_OPT = -O2 -fdefault-real-8 -fdefault-double-8
+FC = ifort
+FFLAGS_DEBUG = -g -mcmodel=medium
+FFLAGS_OPT = -O2 -mcmodel=medium
 LDFLAGS = -g
 
 # Directories
@@ -29,30 +29,30 @@ $(shell mkdir -p $(OBJDIR) $(BINDIR))
 all: $(EXECUTABLES)
 
 # Debug objects (compiled with -g)
-$(OBJDIR)/%.o: %.for
+$(OBJDIR)/%.o: %.f
 	$(FC) $(FFLAGS_DEBUG) -c $< -o $@
 
 # Optimized objects (compiled with -O2)
-$(OBJDIR)/recalc-freq.o: recalc-freq.for
+$(OBJDIR)/recalc-freq.o: recalc-freq.f
 	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
-$(OBJDIR)/proj0freq.o: proj0freq.for
+$(OBJDIR)/proj0freq.o: proj0freq.f
 	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
-$(OBJDIR)/bmatred.o: bmatred.for
+$(OBJDIR)/bmatred.o: bmatred.f
 	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
-$(OBJDIR)/ddiag.o: ddiag.for
+$(OBJDIR)/ddiag.o: ddiag.f
 	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
-$(OBJDIR)/dmpower.o: dmpower.for
+$(OBJDIR)/dmpower.o: dmpower.f
 	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
-$(OBJDIR)/dmatinv.o: dmatinv.for
+$(OBJDIR)/dmatinv.o: dmatinv.f
 	$(FC) $(FFLAGS_OPT) -c $< -o $@
 
 # Keep subs-dftb.o compilation rule but don't include it in COMMON_OBJS
-$(OBJDIR)/subs-dftb.o: subs-dftb.for
+$(OBJDIR)/subs-dftb.o: subs-dftb.f
 	$(FC) $(FFLAGS_DEBUG) -c $< -o $@
 
 # Executables
