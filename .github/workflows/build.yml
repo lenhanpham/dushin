@@ -14,15 +14,19 @@ jobs:
       - name: Configure Intel oneAPI environment
         shell: bash
         run: |
-          source /opt/intel/oneapi/setvars.sh --force
-          printenv >> $GITHUB_ENV
+          . /opt/intel/oneapi/setvars.sh
+          echo "source_script=. /opt/intel/oneapi/setvars.sh" >> $GITHUB_ENV
       - name: Create directories
         run: |
           mkdir -p src/obj
           mkdir -p src/bin
       - name: Build all executables
         working-directory: src
+        shell: bash
         run: |
+          ${{ env.source_script }}
+          which ifort
+          ifort --version
           make all
       - name: Upload binaries
         uses: actions/upload-artifact@v4
@@ -34,4 +38,7 @@ jobs:
             src/bin/compare-geom
       - name: Clean
         working-directory: src
-        run: make clean
+        shell: bash
+        run: |
+          ${{ env.source_script }}
+          make clean
