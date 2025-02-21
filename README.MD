@@ -15,8 +15,10 @@ This is the modified version of dushin program for decomposition of reorganizati
 
 Please have a look at the example to prepare input files
 
-* The program needs: log outputs from Gaussian, fchk converted from chk using formchk command
-* example input is provided 
+* The program needs: log outputs from Gaussian, fchk obtained using formchk input.chk 
+* An example input is provided in the examples directory 
 
+#### Leave comments in issues to have more support from me.
 
+I do not have free time to explain how to use Dushin program to calculate internal reorganization energy from harmonic vibrational modes. Leave comments in Issues, and there will be support.
 
