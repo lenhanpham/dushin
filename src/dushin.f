@@ -10,7 +10,7 @@ c     **** ifref= -1 like 0 except in curvi analyses the z matrix coords
 c     ****          are stored and subsequent ifref=2 calcs use the difference
 c     ****	    to these coords and project this diff onto the ref nc's
 c
-
+	  program dushin_2_0  
       parameter (m=300, m3=3*m, mr=m*12)
       implicit real*8 (a-h,o-z)
       real*8	x2(3,m),fc(m3,m3),c1(m3,m3),eval1(m3),fir(m3),
@@ -92,6 +92,11 @@ c     **** used to identify zero freq modes ****
       open (16,file=basename(1:baselen)//'.out',status='unknown')
 
       ifcurve= 0
+	  write(6, '(A)') '-------------------------------------------'
+	  write(6, '(A)') 'Dushin 2.0 modified by Le Nhan Pham'
+	  write(6, '(A)') 'https://lenhanpham.github.io/'
+	  write(6, '(A)') 'Originally developed by Jeffrey R. Reimers'
+	  write(6, '(A)') '-------------------------------------------'
       write (6,*) 'Enter ifcurve (0=recti, 1=orth curvi, 2=apprx curvi',
      $   ', -1 = skip'
       write (6,*) 'And atom ordering flag,',
@@ -998,4 +1003,5 @@ c	********** USE #2 COORDS LATER IN DIFF OF Z *********
 990   format (i4,1x,a3,f7.0,f8.4,2f8.1,i4,1x,a3,f7.0)
 991   format (15x,f8.4,f8.1,8x,i4,1x,a3,f7.0)
 992   format (i4,1x,a3,f7.0,16x,f8.1)
-      end
+	  write (6,'(/,A)') 'End of dushin 2.0'
+	end program dushin_2_0
