@@ -46,7 +46,7 @@ c     **** wk=		work vector
       character*6	prog
 c MHL (due to adding wB97XD)
 c      parameter		(maxe=17)
-      parameter		(maxe=19)
+      parameter		(maxe=22)
       character*8	etype(-1:maxe),meth
       common /cons/	au2ang,au2cm,amu2au
 
@@ -84,7 +84,7 @@ c MHL (add wB97XD) SH add PBE1PBE
      $	'CCSD' , 'CCSD(T)', 'EOM-CCSD', 'TD-B3LYP','TD-BLYP',
 c     $	'CASSCF', 'CASPT2' , 'BP86' , 'PM6', 'CAMB3LYP','TD' /
      $	'CASSCF', 'CASPT2' , 'BP86' , 'PM6', 'CAMB3LYP','TD','WB97XD',
-     $  'PBE1PBE'  /
+     $  'PBE1PBE', 'M062X', 'TPSSTPSS', 'TPSSh'  /
       data au2ang,au2cm,amu2au /0.529177249D0,219477.D0,1822.845D0/
       data swap / 2,1,3, 1,3,2, 3,1,2, 2,3,1, 3,2,1 /
       data atmass
